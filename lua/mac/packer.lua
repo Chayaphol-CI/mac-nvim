@@ -1,0 +1,84 @@
+-- vim.cmd [[packadd packer.nvim]]
+--
+-- return require('packer').startup(function(use)
+--   -- Packer can manage itself
+--   use 'wbthomason/packer.nvim'
+--
+--   use {
+-- 	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
+-- 	  -- or                            , branch = '0.1.x',
+-- 	  requires = { {'nvim-lua/plenary.nvim'} }
+--   }
+--
+--   use {
+--   "ficcdaf/ashen.nvim",
+--   priority = 1000,
+--   name = "ashen",
+--   config = function()
+--     require("ashen").setup({
+--       transparent = true,
+--       color = {
+--         background = "#FFFFFF",
+--         red = "#66660E",
+--       },
+--     })
+--
+--     vim.cmd("colorscheme ashen")
+--
+--     -- Optional: Wait for colorscheme to load, then override highlights
+--     vim.defer_fn(function()
+--       vim.api.nvim_set_hl(0, "@constructor", { fg = "#e6a139" })
+--       vim.api.nvim_set_hl(0, "@tag", { fg = "#e6a139" })
+--       vim.api.nvim_set_hl(0, "TSConstructor", { fg = "#e6a139" }) -- fallback for some plugins
+--     end, 0)
+--   end,
+-- }
+--
+--   -- use {
+--   --  'Shatur/neovim-ayu',
+--   --  config = function()
+--   --   require('ayu').setup({
+--   -- 	  mirage   = false,   -- set to true for mirage variant
+--   -- 	  terminal = true,    -- let ayu theme the terminal
+--   -- 	  overrides = {
+--   -- 		  -- example: disable italics for comments
+--   -- 		  Comment = { italic = true },
+--   -- 	  },
+--   --   })
+--   --   -- Finally, apply the theme:
+--   --   require('ayu').colorscheme()
+--   --  end
+--   -- }
+--
+--   use {'nvim-treesitter/nvim-treesitter',run = ':TSUpdate',}
+--   use {'nvim-treesitter/playground'}
+--   use {'theprimeagen/harpoon'}
+--   use {'mbbill/undotree'}
+--   use {'tpope/vim-fugitive'}
+--
+--   use {
+-- 	  "VonHeikemen/lsp-zero.nvim",
+-- 	  requires = {
+-- 		  -- LSP Support
+-- 		  {'neovim/nvim-lspconfig'},
+-- 		  {'williamboman/mason.nvim'},
+-- 		  {'williamboman/mason-lspconfig.nvim'},
+--
+-- 		  -- Autocompletion
+-- 		  {'hrsh7th/nvim-cmp'},
+-- 		  {'hrsh7th/cmp-buffer'},
+-- 		  {'hrsh7th/cmp-path'},
+-- 		  {'saadparwaiz1/cmp_luasnip'},
+-- 		  {'hrsh7th/cmp-nvim-lsp'},
+-- 		  {'hrsh7th/cmp-nvim-lua'},
+--
+-- 		  -- Snippets
+-- 		  {'L3MON4D3/LuaSnip'},
+-- 		  {'rafamadriz/friendly-snippets'},
+-- 	  }
+--
+--       }
+--
+--
+--
+-- end)
