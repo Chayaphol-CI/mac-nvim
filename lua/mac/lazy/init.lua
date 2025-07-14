@@ -11,6 +11,7 @@ return {
 	},
 	{
 		"christoomey/vim-tmux-navigator", -- tmux & split window navigation
+		lazy = false,
 		cmd = {
 			"TmuxNavigateLeft",
 			"TmuxNavigateDown",
@@ -19,12 +20,12 @@ return {
 			"TmuxNavigatePrevious",
 			"TmuxNavigatorProcessList",
 		},
-		-- keys = {
-		-- 	{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-		-- 	{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-		-- 	{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-		-- 	{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-		-- 	{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-		-- },
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
 	},
 }
