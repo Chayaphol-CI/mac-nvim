@@ -3,7 +3,6 @@ return {
 	config = function()
 		local mark = require("harpoon.mark")
 		local ui = require("harpoon.ui")
-		-- local harpoon = require("harpoon")
 		-- harpoon:setup()
 		vim.keymap.set("n", "<leader>a", mark.add_file)
 		vim.keymap.set("n", "<C-t>", ui.toggle_quick_menu)

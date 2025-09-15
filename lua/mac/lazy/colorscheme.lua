@@ -67,18 +67,27 @@
 -- }
 
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "tokyonight"
+	-- color = color or "solarized-osaka"
+
 	local red = "#a35a6f"
 	vim.cmd.colorscheme(color)
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 	-- 🔥 ปรับสี highlight ของ treesitter
-	vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { fg = red })
-	vim.api.nvim_set_hl(0, "@_jsx_element.tsx", { fg = red })
-	vim.api.nvim_set_hl(0, "@_jsx_attribute.tsx", { fg = red })
-	vim.api.nvim_set_hl(0, "@variable.member.tsx", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@_jsx_element.tsx", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@_jsx_attribute.tsx", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@variable.member.tsx", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@lsp.type.property.typescript", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@lsp.mod.declaration.typescript", { fg = red })
+	-- vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescript", { fg = red })
+
+	-- - @lsp.type.property.typescript links to @property   priority: 125
+	-- - @lsp.mod.declaration.typescript links to @lsp   priority: 126
+	-- - @lsp.typemod.property.declaration.typescript links to @lsp   priority: 127
 end
 
 return {
@@ -87,78 +96,223 @@ return {
 		"erikbackman/brightburn.vim",
 	},
 
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		ColorMyPencils()
+	-- 	end,
+	-- },
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	name = "gruvbox",
+	-- 	config = function()
+	-- 		require("gruvbox").setup({
+	-- 			terminal_colors = true, -- add neovim terminal colors
+	-- 			undercurl = true,
+	-- 			underline = false,
+	-- 			bold = true,
+	-- 			italic = {
+	-- 				strings = false,
+	-- 				emphasis = false,
+	-- 				comments = false,
+	-- 				operators = false,
+	-- 				folds = false,
+	-- 			},
+	-- 			strikethrough = true,
+	-- 			invert_selection = false,
+	-- 			invert_signs = false,
+	-- 			invert_tabline = false,
+	-- 			invert_intend_guides = false,
+	-- 			inverse = true, -- invert background for search, diffs, statuslines and errors
+	-- 			contrast = "", -- can be "hard", "soft" or empty string
+	-- 			palette_overrides = {},
+	-- 			overrides = {},
+	-- 			dim_inactive = false,
+	-- 			transparent_mode = false,
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	config = function()
+	-- 		require("tokyonight").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+	-- 			transparent = true, -- Enable this to disable setting the background color
+	-- 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+	-- 			styles = {
+	-- 				-- Style to be applied to different syntax groups
+	-- 				-- Value is any valid attr-list value for `:help nvim_set_hl`
+	-- 				comments = { italic = false },
+	-- 				keywords = { italic = false },
+	-- 				-- Background styles. Can be "dark", "transparent" or "normal"
+	-- 				sidebars = "dark", -- style for sidebars, see below
+	-- 				floats = "dark", -- style for floating windows
+	-- 			},
+	-- 		})
+	-- ColorMyPencils()
+	-- 	end,
+	-- },
+
+	-- {
+	-- 	{
+	-- 		"ellisonleao/gruvbox.nvim",
+	-- 		priority = 1000, -- โหลดก่อน เพื่อให้โค้ดสีทำงานทันที
+	-- 		config = function()
+	-- 			require("gruvbox").setup({
+	-- 				-- ตั้งค่าให้ใช้โหมด light
+	-- 				undercurl = true,
+	-- 				underline = true,
+	-- 				bold = true,
+	-- 				italic = {
+	-- 					strings = true,
+	-- 					emphasis = true,
+	-- 					comments = true,
+	-- 					operators = false,
+	-- 					folds = true,
+	-- 				},
+	-- 				strikethrough = true,
+	-- 				invert_selection = false,
+	-- 				invert_signs = false,
+	-- 				invert_tabline = false,
+	-- 				inverse = true,
+	-- 				contrast = "", -- "", "hard", "soft"
+	-- 				palette_overrides = {},
+	-- 				overrides = {},
+	-- 				dim_inactive = false,
+	-- 				transparent_mode = false,
+	-- 			})
+	-- 			vim.o.background = "light"
+	-- 			vim.cmd([[colorscheme gruvbox]])
+	-- 		end,
+	-- 	},
+	-- },
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "latte", -- latte, frappe, macchiato, mocha
+	-- 			transparent_background = true,
+	-- 			term_colors = true,
+	-- 			integrations = {
+	-- 				cmp = true,
+	-- 				gitsigns = true,
+	-- 				nvimtree = true,
+	-- 				telescope = true,
+	-- 				treesitter = true,
+	-- 				notify = false,
+	-- 				mini = false,
+	-- 			},
+	-- 		})
+	--
+	-- 		-- load colorscheme
+	-- 		vim.cmd.colorscheme("catppuccin")
+	-- 	end,
+	-- },
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
-		opts = {},
+		priority = 1000,
 		config = function()
-			ColorMyPencils()
-		end,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		name = "gruvbox",
-		config = function()
-			require("gruvbox").setup({
-				terminal_colors = true, -- add neovim terminal colors
-				undercurl = true,
-				underline = false,
-				bold = true,
-				italic = {
-					strings = false,
-					emphasis = false,
-					comments = false,
-					operators = false,
-					folds = false,
-				},
-				strikethrough = true,
-				invert_selection = false,
-				invert_signs = false,
-				invert_tabline = false,
-				invert_intend_guides = false,
-				inverse = true, -- invert background for search, diffs, statuslines and errors
-				contrast = "", -- can be "hard", "soft" or empty string
-				palette_overrides = {},
-				overrides = {},
-				dim_inactive = false,
-				transparent_mode = false,
-			})
-		end,
-	},
-	{
-		"folke/tokyonight.nvim",
-		config = function()
+			local transparent = true -- set to true if you would like to enable transparency
+
+			local bg = "#011628"
+			local bg_dark = "#011423"
+			local bg_highlight = "#143652"
+			local bg_search = "#0A64AC"
+			local bg_visual = "#275378"
+			local fg = "#CBE0F0"
+			local fg_dark = "#B4D0E9"
+			local fg_gutter = "#627E97"
+			local border = "#547998"
+
 			require("tokyonight").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-				transparent = true, -- Enable this to disable setting the background color
-				terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+				style = "night",
+				transparent = transparent,
 				styles = {
-					-- Style to be applied to different syntax groups
-					-- Value is any valid attr-list value for `:help nvim_set_hl`
-					comments = { italic = false },
-					keywords = { italic = false },
-					-- Background styles. Can be "dark", "transparent" or "normal"
-					sidebars = "dark", -- style for sidebars, see below
-					floats = "dark", -- style for floating windows
+					sidebars = transparent and "transparent" or "dark",
+					floats = transparent and "transparent" or "dark",
 				},
+				on_colors = function(colors)
+					colors.bg = bg
+					colors.bg_dark = transparent and colors.none or bg_dark
+					colors.bg_float = transparent and colors.none or bg_dark
+					colors.bg_highlight = bg_highlight
+					colors.bg_popup = bg_dark
+					colors.bg_search = bg_search
+					colors.bg_sidebar = transparent and colors.none or bg_dark
+					colors.bg_statusline = transparent and colors.none or bg_dark
+					colors.bg_visual = bg_visual
+					colors.border = border
+					colors.fg = fg
+					colors.fg_dark = fg_dark
+					colors.fg_float = fg
+					colors.fg_gutter = fg_gutter
+					colors.fg_sidebar = fg_dark
+				end,
 			})
+
+			vim.cmd("colorscheme tokyonight")
 		end,
 	},
 
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				disable_background = true,
-				styles = {
-					italic = false,
-				},
-			})
+	-- {
+	-- 	{
+	-- 		"craftzdog/solarized-osaka.nvim",
+	-- 		lazy = false, -- โหลดทันที (จะได้สั่ง colorscheme ได้เลย)
+	-- 		priority = 1000, -- ให้ธีมมาก่อนปลั๊กอินอื่น
+	-- 		opts = {
+	-- 			-- ตัวอย่างออปชันยอดนิยม (ปรับได้ตามใจ)
+	-- 			terminal_colors = true,
+	-- 			transparent = true, -- true ถ้าอยากให้ BG โปร่ง
+	-- 			dim_inactive = false, -- ลดความเข้มหน้าต่างที่ไม่ได้โฟกัส
+	-- 			styles = {
+	-- 				comments = { italic = true },
+	-- 				keywords = { bold = true },
+	-- 				functions = {},
+	-- 				variables = {},
+	-- 			},
+	-- 			-- ถ้าอยากปรับสีเฉพาะกลุ่ม (override highlight)
+	-- 			-- on_colors = function(colors) colors.bg = "#000000" end,
+	-- 			-- on_highlights = function(hl, c) hl.NormalFloat = { bg = c.bg } end,
+	-- 		},
+	-- 		config = function(_, opts)
+	-- 			-- บางเวอร์ชันของธีมมีฟังก์ชัน setup; ถ้าไม่มี ก็จะข้ามได้
+	-- 			pcall(function()
+	-- 				require("solarized-osaka").setup(opts)
+	-- 			end)
+	-- 			vim.cmd.colorscheme("solarized-osaka")
+	-- 		end,
+	-- 	},
+	-- },
 
-			ColorMyPencils()
-		end,
-	},
+	-- {
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = function()
+	-- 		return {
+	-- 			transparent = true,
+	-- 		}
+	-- 	end,
+	-- },
+
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		require("rose-pine").setup({
+	-- 			disable_background = true,
+	-- 			styles = {
+	-- 				italic = false,
+	-- 			},
+	-- 		})
+	--
+	-- ColorMyPencils()
+	-- 	end,
+	-- },
 }
