@@ -74,13 +74,13 @@ return {
 					gs.blame_line({ full = true })
 				end) -- blame ทั้ง commit
 				map("n", "<leader>tb", gs.toggle_current_line_blame) -- toggle blame
-				map("n", "<leader>hd", gs.diffthis) -- diff กับ HEAD
-				map("n", "<leader>hD", function()
-					gs.diffthis("~")
-				end)
+				-- map("n", "<leader>hd", gs.diffthis) -- diff กับ HEAD
+				-- map("n", "<leader>hD", function()
+				-- 	gs.diffthis("~")
+				-- end)
 
 				-- 🔁 Toggle
-				map("n", "<leader>td", gs.toggle_deleted)
+				-- map("n", "<leader>td", gs.toggle_deleted)
 			end,
 		})
 	end,
