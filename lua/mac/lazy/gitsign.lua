@@ -56,7 +56,8 @@ return {
 					return "<Ignore>"
 				end, { expr = true })
 
-				-- ⚙️ Actions
+				-- ⚙️ Actions Change
+				-- New Line
 				map("n", "<leader>hs", gs.stage_hunk) -- stage hunk
 				map("n", "<leader>hr", gs.reset_hunk) -- reset hunk
 				map("v", "<leader>hs", function()
