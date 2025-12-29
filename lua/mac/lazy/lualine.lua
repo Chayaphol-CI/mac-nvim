@@ -9,11 +9,19 @@ return {
 
 			local fname = vim.fn.expand("%:t")
 			local icon = require("nvim-web-devicons").get_icon(fname, nil, { default = true })
+			local ft_icon, ft_color = require("nvim-web-devicons").get_icon(fname, nil, { default = true })
 			local modified = vim.bo.modified and "●" or ""
 			if fname == "" then
 				fname = ""
 			end
-			return string.format(" %s %s %s ", icon or "", fname, modified)
+			-- return string.format(" %s %s %s ", icon or "", fname, modified)
+			if ft_icon and ft_color then
+				-- This string applies the specific highlight group (ft_color) to the icon
+				return string.format(" %%#%s#%s%%* %s %s ", ft_color, ft_icon, fname, modified)
+			else
+				-- Fallback if no specific icon/color is found
+				return string.format(" %s %s %s ", ft_icon or "", fname, modified)
+			end
 		end
 
 		require("lualine").setup({

@@ -2,7 +2,6 @@ require("mac.remap")
 require("mac.set")
 require("mac.lazy_init")
 
-
 -- local augroup = vim.api.nvim_create_augroup
 -- local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 --
