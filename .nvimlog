@@ -1,0 +1,6 @@
+WRN 2026-03-12T17:55:52.416 ?.79980    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/4xttjX/nvim.79980.0
+WRN 2026-03-12T17:56:08.374 ?.80047    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/k09OqE/nvim.80047.0
+WRN 2026-03-12T17:56:13.726 ?.80062    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/jucjGr/nvim.80062.0
+WRN 2026-03-12T17:56:22.478 ?.80100    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/lNwh6s/nvim.80100.0
+WRN 2026-03-12T17:56:45.349 ?.80187    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/46nzSV/nvim.80187.0
+WRN 2026-03-12T17:56:51.161 ?.80237    server_start:163: Failed to start server: operation not permitted: /var/folders/_w/9wc4kmfx6nb21k3w5k3b89cw0000gn/T/nvim.chayaphol/0yY6HI/nvim.80237.0

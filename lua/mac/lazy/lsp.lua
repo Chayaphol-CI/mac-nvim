@@ -37,7 +37,7 @@ return {
 					"yamlls",
 					"lua_ls",
 					"eslint",
-					"eslint_d",
+					"clangd",
 				},
 			})
 
@@ -84,6 +84,7 @@ return {
 						},
 					},
 				},
+				clangd = {},
 			}
 
 			for name, cfg in pairs(servers) do

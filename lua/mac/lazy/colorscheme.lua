@@ -15,6 +15,7 @@ function ColorMyPencils(color)
 
 	local red = "#a35a6f"
 	local pink = "#fd6592"
+	local rp = "#F4B9B8"
 	vim.cmd.colorscheme(color)
 
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -30,8 +31,11 @@ function ColorMyPencils(color)
 
 	-- Rose Pine pink
 	-- vim.api.nvim_set_hl(0, "@lsp.type.variable.typescript", { fg = pink })
+	vim.api.nvim_set_hl(0, "@type.tsx", { fg = "#FFFFFF" })
+	vim.api.nvim_set_hl(0, "@punctuation.bracket.tsx", { fg = red })
 	-- vim.api.nvim_set_hl(0, "@lsp.mod.declaration.typescript", { fg = red })
-	-- vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescript", { fg = red })
+	vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescript", { fg = red })
+	vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescriptreact", { fg = rp })
 
 	-- - @lsp.type.property.typescript links to @property   priority: 125
 	-- - @lsp.mod.declaration.typescript links to @lsp   priority: 126
@@ -44,69 +48,72 @@ return {
 		"erikbackman/brightburn.vim",
 	},
 
-	{
-		"ficcdaf/ashen.nvim",
-		priority = 1000,
-		name = "ashen",
-		config = function()
-			require("ashen").setup({
-				transparent = true,
-				color = {
-					background = "#FFFFFF",
-					red = "#66660E",
-				},
-			})
-
-			vim.cmd("colorscheme ashen")
-
-			-- 🔁 Wait for the colorscheme to finish applying before setting highlight
-			vim.defer_fn(function()
-				-- ✅ HTML Tags (เช่น <div>, <p>, <h1>)
-				vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { fg = "#4F8681" }) -- เขียวน้ำทะเล
-				vim.api.nvim_set_hl(0, "@tag", { fg = "#4F8681" })
-
-				-- ✅ Component Tags (เช่น <Card>, <Checkbox>)
-				vim.api.nvim_set_hl(0, "@variable.tsx", { fg = "#e6a139", bold = true }) -- ส้มทอง
-				vim.api.nvim_set_hl(0, "@lsp.type.function", { fg = "#e6a139", bold = true }) -- ส้มทอง
-				-- ✅ Member Variables (เช่น `obj.key`)
-				vim.api.nvim_set_hl(0, "@variable.member.tsx", { fg = "#4F8681" })
-
-				-- fallback
-				vim.api.nvim_set_hl(0, "@variable.member", { fg = "#4F8681" })
-				vim.api.nvim_set_hl(0, "@variable.member.typescript", { fg = "#4F8681" })
-				-- (optional fallback)
-				vim.api.nvim_set_hl(0, "@variable", { fg = "#e6a139", bold = true }) -- vim.api.nvim_set_hl(0, "@constructor", { fg = "#e6a139" })
-				-- vim.api.nvim_set_hl(0, "@tag", { fg = "#e6a139" })
-				-- vim.api.nvim_set_hl(0, "TSConstructor", { fg = "#e6a139" })
-
-				-- Types (TS, Lua, etc.)
-				vim.api.nvim_set_hl(0, "@type", { fg = "#5a8889" })
-				vim.api.nvim_set_hl(0, "@type.identifier", { fg = "#5a8889" })
-				vim.api.nvim_set_hl(0, "TSType", { fg = "#5a8889" })
-				vim.api.nvim_set_hl(0, "@lsp.mod.declaration.typescript", { fg = "#5a8889" })
-				-- vim.api.nvim_set_hl(0, "@lsp.type.property.typescript", { fg = "#5a8889" })
-				vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescript", { fg = "#FF8058" })
-				vim.api.nvim_set_hl(0, "@type.builtin.typescript", { fg = "#a35a6f" })
-
-				-- Variables (ownerData, self, Motion, etc.)
-				-- vim.api.nvim_set_hl(0, "@variable", { fg = "#FF8058" })
-				vim.api.nvim_set_hl(0, "@variable", { fg = "#ff8000" })
-				vim.api.nvim_set_hl(0, "@variable.parameter", { fg = "#AA8054" })
-				vim.api.nvim_set_hl(0, "@field", { fg = "#AA8054" })
-
-				-- Keywords (function, local, return)
-				vim.api.nvim_set_hl(0, "@keyword", { fg = "#737c70" })
-				vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#737c70" })
-				vim.api.nvim_set_hl(0, "@conditional", { fg = "#737c70" })
-				vim.api.nvim_set_hl(0, "@repeat", { fg = "#737c70" })
-
-				-- Literals like `nil`, `true`, `false`, and built-ins
-				vim.api.nvim_set_hl(0, "@constant.builtin", { fg = "#e06c75" })
-				vim.api.nvim_set_hl(0, "@boolean", { fg = "#e06c75" })
-				vim.api.nvim_set_hl(0, "@function.builtin", { fg = "#e06c75" })
-			end, 50)
-		end,
-	},
+	-- {
+	-- 	"ficcdaf/ashen.nvim",
+	-- 	priority = 1000,
+	-- 	name = "ashen",
+	-- 	config = function()
+	-- 		require("ashen").setup({
+	-- 			transparent = true,
+	-- 			color = {
+	-- 				background = "#FFFFFF",
+	-- 				red = "#66660E",
+	-- 			},
+	-- 		})
+	--
+	-- 		vim.cmd("colorscheme ashen")
+	--
+	-- 		-- 🔁 Wait for the colorscheme to finish applying before setting highlight
+	-- 		vim.defer_fn(function()
+	-- 			-- ✅ HTML Tags (เช่น <div>, <p>, <h1>)
+	-- 			vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { fg = "#4F8681" }) -- เขียวน้ำทะเล
+	-- 			vim.api.nvim_set_hl(0, "@tag", { fg = "#4F8681" })
+	--
+	-- 			-- ✅ Component Tags (เช่น <Card>, <Checkbox>)
+	-- 			vim.api.nvim_set_hl(0, "@variable.tsx", { fg = "#e6a139", bold = true }) -- ส้มทอง
+	-- 			vim.api.nvim_set_hl(0, "@lsp.type.function", { fg = "#e6a139", bold = true }) -- ส้มทอง
+	-- 			-- ✅ Member Variables (เช่น `obj.key`)
+	-- 			vim.api.nvim_set_hl(0, "@variable.member.tsx", { fg = "#4F8681" })
+	--
+	-- 			-- fallback
+	-- 			vim.api.nvim_set_hl(0, "@variable.member", { fg = "#4F8681" })
+	-- 			vim.api.nvim_set_hl(0, "@variable.member.typescript", { fg = "#4F8681" })
+	-- 			-- (optional fallback)
+	-- 			vim.api.nvim_set_hl(0, "@variable", { fg = "#e6a139", bold = true }) -- vim.api.nvim_set_hl(0, "@constructor", { fg = "#e6a139" })
+	-- 			-- vim.api.nvim_set_hl(0, "@tag", { fg = "#e6a139" })
+	-- 			-- vim.api.nvim_set_hl(0, "TSConstructor", { fg = "#e6a139" })
+	--
+	-- 			-- Types (TS, Lua, etc.)
+	-- 			vim.api.nvim_set_hl(0, "@type", { fg = "#5a8889" })
+	-- 			vim.api.nvim_set_hl(0, "@type.identifier", { fg = "#5a8889" })
+	-- 			vim.api.nvim_set_hl(0, "TSType", { fg = "#5a8889" })
+	-- 			vim.api.nvim_set_hl(0, "@lsp.mod.declaration.typescript", { fg = "#5a8889" })
+	-- 			-- vim.api.nvim_set_hl(0, "@lsp.type.property.typescript", { fg = "#5a8889" })
+	-- 			vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration.typescript", { fg = "#FF8058" })
+	-- 			vim.api.nvim_set_hl(0, "@type.builtin.typescript", { fg = "#a35a6f" })
+	-- 			vim.api.nvim_set_hl(0, "@lsp.type.property.lua", { fg = "#5a8889" })
+	-- 			vim.api.nvim_set_hl(0, "@property.json", { fg = "#5a8889" })
+	--
+	-- 			-- Variables (ownerData, self, Motion, etc.)
+	-- 			-- vim.api.nvim_set_hl(0, "@variable", { fg = "#FF8058" })
+	-- 			vim.api.nvim_set_hl(0, "@variable", { fg = "#ff8000" })
+	-- 			vim.api.nvim_set_hl(0, "@variable.parameter", { fg = "#AA8054" })
+	-- 			vim.api.nvim_set_hl(0, "@field", { fg = "#AA8054" })
+	-- 			-- vim.api.nvim_set_hl(0, "@_jsx_attribute.tsx", { fg = "#AA8054" })
+	--
+	-- 			-- Keywords (function, local, return)
+	-- 			vim.api.nvim_set_hl(0, "@keyword", { fg = "#737c70" })
+	-- 			vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#737c70" })
+	-- 			vim.api.nvim_set_hl(0, "@conditional", { fg = "#737c70" })
+	-- 			vim.api.nvim_set_hl(0, "@repeat", { fg = "#737c70" })
+	--
+	-- 			-- Literals like `nil`, `true`, `false`, and built-ins
+	-- 			vim.api.nvim_set_hl(0, "@constant.builtin", { fg = "#e06c75" })
+	-- 			vim.api.nvim_set_hl(0, "@boolean", { fg = "#e06c75" })
+	-- 			vim.api.nvim_set_hl(0, "@function.builtin", { fg = "#e06c75" })
+	-- 		end, 50)
+	-- 	end,
+	-- },
 
 	-- {
 	-- 	"folke/tokyonight.nvim",
@@ -272,29 +279,54 @@ return {
 	-- 	end,
 	-- },
 
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			terminal_colors = true,
+			transparent = true,
+			dim_inactive = false,
+			styles = {
+				comments = { italic = true },
+				keywords = { bold = true },
+				functions = {},
+				variables = {},
+			},
+		},
+		config = function(_, opts)
+			pcall(function()
+				require("solarized-osaka").setup(opts)
+			end)
+			vim.cmd.colorscheme("solarized-osaka")
+		end,
+	},
+
 	-- {
-	-- 	{
-	-- 		"craftzdog/solarized-osaka.nvim",
-	-- 		lazy = false, -- โหลดทันที (จะได้สั่ง colorscheme ได้เลย)
-	-- 		priority = 1000, -- ให้ธีมมาก่อนปลั๊กอินอื่น
-	-- 		opts = {
-	-- 			terminal_colors = true,
-	-- 			transparent = true, -- true ถ้าอยากให้ BG โปร่ง
-	-- 			dim_inactive = false, -- ลดความเข้มหน้าต่างที่ไม่ได้โฟกัส
-	-- 			styles = {
-	-- 				comments = { italic = true },
-	-- 				keywords = { bold = true },
-	-- 				functions = {},
-	-- 				variables = {},
-	-- 			},
-	-- 		},
-	-- 		config = function(_, opts)
-	-- 			pcall(function()
-	-- 				require("solarized-osaka").setup(opts)
-	-- 			end)
-	-- 			vim.cmd.colorscheme("solarized-osaka")
-	-- 		end,
-	-- 	},
+	-- 	"shaunsingh/moonlight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.g.moonlight_italic_comments = true
+	-- 		vim.g.moonlight_italic_keywords = false
+	-- 		vim.g.moonlight_contrast = true
+	-- 		vim.g.moonlight_borders = false
+	-- 		vim.g.moonlight_disable_background = true -- transparency
+	-- 		require("moonlight").set()
+	-- 	end,
+	-- },
+
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("kanagawa").setup({
+	-- 			transparent = true,
+	-- 			theme = "dragon",
+	-- 		})
+	-- 		vim.cmd.colorscheme("kanagawa-dragon")
+	-- 	end,
 	-- },
 
 	-- {
@@ -335,6 +367,38 @@ return {
 	-- 		})
 	--
 	-- 		ColorMyPencils("rose-pine")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"gmr458/vscode_modern_theme.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("vscode_modern").setup({
+	-- 			cursorline = true,
+	-- 			transparent_background = true,
+	-- 			nvim_tree_darker = true,
+	-- 		})
+	-- 		vim.cmd.colorscheme("vscode_modern")
+	-- 	end,
+	-- },
+
+	-- {
+	-- 	"bachiitter/orng.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("orng").setup({
+	-- 			-- transparent = false
+	--
+	-- 			style = "dark", -- "dark" or "light"
+	-- 			transparent = true, -- Enable transparent background
+	-- 			integrations = {
+	-- 				lualine = true, -- Auto-configure lualine theme
+	-- 			},
+	-- 			colors = {}, -- Override palette colors
+	-- 			highlights = {}, -- Override highlight groups
+	-- 		})
 	-- 	end,
 	-- },
 }

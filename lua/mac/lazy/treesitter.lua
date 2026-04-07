@@ -1,6 +1,9 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"windwp/nvim-ts-autotag", -- 👈 บังคับ load ก่อน
+		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- A list of parser names, or "all"
@@ -8,7 +11,9 @@ return {
 					"vimdoc",
 					"javascript",
 					"typescript",
+					"tsx",
 					"c",
+				"cpp",
 					"lua",
 					"rust",
 					"jsdoc",
@@ -54,6 +59,8 @@ return {
 					-- Instead of true it can also be a list of languages
 					additional_vim_regex_highlighting = { "markdown" },
 				},
+
+				autotag = { enable = true },
 			})
 
 			local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -71,7 +78,7 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		after = "nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesitter-context").setup({
 				enable = false, -- Enable this plugin (Can be enabled/disabled later via commands)
